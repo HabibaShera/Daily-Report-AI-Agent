@@ -7,11 +7,9 @@ on:
   workflow_dispatch:      # allow manual trigger
 
 jobs:
-  send-email:
+  build:
     runs-on: ubuntu-latest
-    env:
-      SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-      SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+
     steps:
       - name: Checkout repo 
       - uses: actions/checkout@v3
@@ -25,4 +23,7 @@ jobs:
         run: pip install -r requirements.txt
         
       - name: Run script
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
         run: python main.py
