@@ -44,7 +44,7 @@ def open_and_read_article(article_link: str):
         article_link (str): The URL of the article page.
     """
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # set headless=True if you don’t want UI
+        browser = p.chromium.launch(headless=True)  # set headless=True if you don’t want UI
         page = browser.new_page()
 
         page.goto(article_link)

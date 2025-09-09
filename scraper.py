@@ -8,7 +8,7 @@ def open_daily_dev():
     url = "https://app.daily.dev/tags/ai-agents"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # headless=False lets you see the browser
+        browser = p.chromium.launch(headless=True)  # headless=False lets you see the browser
         context = browser.new_context()
         page = context.new_page()
         page.goto(url)
