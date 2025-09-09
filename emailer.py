@@ -9,8 +9,8 @@ import markdown
 
 def send_email(subject: str, body: str, recipient: str):
     # create the email
-    sender_email = os.getenv("sender_email")
-    sender_password = os.getenv("sender_password")
+    sender_email = os.getenv("SENDER_EMAIL")
+    sender_password = os.getenv("SENDER_PASSWORD")
 
     msg = MIMEMultipart()
     msg["From"] = sender_email

@@ -5,7 +5,7 @@ from groq import Groq
 #from settings import groq_token
 
 # Initialize Groq client
-groq_token = os.getenv("groq_token")
+groq_token = os.getenv("GROQ_TOKEN")
 client = Groq(api_key=groq_token)
 
 def summarize_text(text: str) -> dict:
