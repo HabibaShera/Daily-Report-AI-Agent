@@ -53,22 +53,24 @@ def open_and_read_article(article_link: str):
             read_post_selector = "a[aria-label='Read post'].btn.focus-outline.inline-flex.cursor-pointer.select-none.flex-row"
             read_post_href = page.get_attribute(read_post_selector, "href")
 
-        except:
-            print("⚠️ Could not find 'Read post' link!")
+            # Step 3: Open the extracted link
+            print(f"🔗 Opening post: {read_post_href}")
+            page.goto(read_post_href, timeout=15000)  # wait up to 15 seconds for load
+
+            # Extract all visible text
+            text = page.inner_text("body")   # this grabs all *rendered* text inside <body>
+            
+            # Step 5: Close browser
             browser.close()
-            return
+            return text, read_post_href
 
-        # Step 3: Open the extracted link
-        print(f"🔗 Opening post: {read_post_href}")
-        page.goto(read_post_href, timeout=15000)  # wait up to 15 seconds for load
 
-        # Extract all visible text
-        text = page.inner_text("body")   # this grabs all *rendered* text inside <body>
+        except:
+            print("⚠️ Could not fetch article !")
+            browser.close()
+            return None, None
+
         
-        # Step 5: Close browser
-        browser.close()
-        return text, read_post_href
-
 
 
 if __name__ == "__main__":

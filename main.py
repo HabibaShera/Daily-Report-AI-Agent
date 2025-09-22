@@ -15,6 +15,10 @@ result = ""
 links = get_random_articles(count=2)
 for link in links:
     text, read_more_link = open_and_read_article(link)
+    if not text:   # if text is None or empty
+        print(f"⚠️ Skipping article {link} because no content was found.")
+        continue
+    
     result += summarize_text(text)
     result += f"\n\n[Read more]({read_more_link})\n\n\n"
 
