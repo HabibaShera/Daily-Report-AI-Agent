@@ -8,7 +8,7 @@ import markdown
 
 
 
-# open_daily_dev()
+open_daily_dev()
 result = ""
 
 

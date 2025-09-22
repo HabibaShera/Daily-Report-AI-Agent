@@ -35,9 +35,9 @@ def open_daily_dev():
             "els => els.map(el => el.querySelector('a')?.href).filter(Boolean)"
         )
 
-        print("Extracted links:")
-        for link in links:
-            print(link)
+        # print("Extracted links:")
+        # for link in links:
+        #     print(link)
 
 
 
