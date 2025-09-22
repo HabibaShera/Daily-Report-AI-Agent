@@ -3,7 +3,7 @@ name: Daily Email Report with AI-Agent
 on:
   schedule:
     # Run at 6:00 AM UTC = 8:00 AM Egypt
-    - cron: "0 6 * * 0-4"   # Sunday → Thursday only
+    - cron: "30 5 * * 0-4"   # Sunday → Thursday only
   workflow_dispatch:      # allow manual trigger
 
 jobs:
