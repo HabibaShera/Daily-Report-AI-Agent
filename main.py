@@ -25,15 +25,19 @@ for link in links:
 
 html_content = markdown.markdown(result, extensions=["extra", "sane_lists"])
 
-emails = os.getenv("EMAIL_LIST", "").splitlines()
-for recipient in emails:
-    print(f"➡️ Sending email to {recipient}...")
-    send_email(
-            subject="Daily AI Report",
-            body=html_content,
-            recipient=recipient
-        )
-
+emails = os.getenv("EMAIL_LIST")
+if not emails:
+    print("⚠️ No recipients found, skipping email send.")
+else:
+    recipients = [e.strip() for e in emails.split(",")]
+    for recipient in recipients:
+        print(f"➡️ Sending email to {recipient}...")
+        send_email(
+                subject="Daily AI Report",
+                body=html_content,
+                recipient=recipient
+            )
+    
 
 
 
