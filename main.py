@@ -27,6 +27,7 @@ html_content = markdown.markdown(result, extensions=["extra", "sane_lists"])
 
 emails = os.getenv("EMAIL_LIST", "").splitlines()
 for recipient in emails:
+    print(f"➡️ Sending email to {recipient}...")
     send_email(
             subject="Daily AI Report",
             body=html_content,
