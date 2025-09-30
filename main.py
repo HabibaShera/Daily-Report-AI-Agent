@@ -4,6 +4,7 @@ from utils import get_random_articles, open_and_read_article
 from summarizer import summarize_text
 from emailer import send_email
 import markdown
+import os
 
 
 
@@ -24,11 +25,13 @@ for link in links:
 
 html_content = markdown.markdown(result, extensions=["extra", "sane_lists"])
 
-send_email(
-        subject="Daily AI Report",
-        body=html_content,
-        recipient="habibashera128@gmail.com"
-    )
+emails = os.getenv("EMAIL_LIST", "").splitlines()
+for recipient in emails:
+    send_email(
+            subject="Daily AI Report",
+            body=html_content,
+            recipient=recipient
+        )
 
 
 
