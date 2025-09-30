@@ -30,4 +30,5 @@ jobs:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
           GROQ_TOKEN: ${{ secrets.GROQ_TOKEN }} 
+          EMAIL_LIST: ${{ secrets.EMAIL_LIST }}
         run: python main.py
